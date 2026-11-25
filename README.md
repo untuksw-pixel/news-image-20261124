@@ -12,7 +12,7 @@ A one-image world front page summing up the news of Tuesday 24 November 2026: 42
 node main.ts
 ```
 
-This copies `entry.png` to `$MAKEFUN_OUTPUT_DIR/entry.png` (default `/output`).
+The image ships in this repository as `entry.png.b64` — the PNG's bytes base64-encoded in a single-line text file, because the snapshot channel that carries this repository accepts UTF-8 text only. Running the entry decodes it back to the real PNG. This writes `entry.png` to `$MAKEFUN_OUTPUT_DIR/entry.png` (default `/output`), byte-identical on every run, using only the Node.js standard library.
 
 ## License
 
