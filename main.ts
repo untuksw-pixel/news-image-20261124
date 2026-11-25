@@ -1,11 +1,11 @@
-// Entry program for make.fun news-image-20261124.
+// Entry program for make.fun news-image-20261124 (v2).
 //
 // The front page image lives in this repository as entry.png. This
 // program simply copies it to the output directory the harness asks
 // for, so both runs produce byte-identical output.
 //
 // Usage: node main.ts   (reads MAKEFUN_OUTPUT_DIR, defaults to /output)
-import { copyFileSync, existsSync, mkdirSync, renameSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, renameSync, statSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -25,4 +25,4 @@ mkdirSync(outDir, { recursive: true });
 const tmp = join(outDir, ".entry.png.tmp");
 copyFileSync(source, tmp);
 renameSync(tmp, target);
-console.log(`Wrote ${target}`);
+console.log(`Wrote ${target} (${statSync(target).size} bytes)`);
